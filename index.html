@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype and Inheritance</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Que 1</legend>
+        Create 2 objects - parent and child. Attach methods to parent and use those methods in child object using parents prototype
+    </fieldset>
+    <fieldset>
+        <pre>
+            let parent={
+                name:"lawrence",
+                lname:"inti",
+                age:22,
+                getName:function(){
+                    return this.name+ this.lname;
+                },
+                getRoll:function(){
+                    return this.rollNo;
+                }
+            }
+            
+            let child={
+                rollNo:27,
+                city:"eluru",
+                // __proto__:parent //method 1
+            }
+            child.__proto__=parent;//method 2
+            
+            console.log(child.getName())
+            console.log(child.getRoll())
+        </pre>
+    </fieldset>
+    <hr>
+    <fieldset>
+        <legend>Que 2</legend>
+        Write code to explain prototype chaining
+    </fieldset>
+    <fieldset>
+        <pre>
+           
+            let parent={
+                name:"lawrence",
+                lname:"inti",
+                age:22,
+                getName:function(){
+                    return this.name+ this.lname;
+                },
+                getRoll:function(){
+                    return this.rollNo;
+                },
+              message1:function(){
+              return "Hii prepbytes Dev"
+              }
+            }
+            
+            let child={
+                rollNo:27,
+                city:"eluru",
+              message1:function(){
+              return "hello world"
+              },
+                 __proto__:parent //method 1
+            }
+            //child.__proto__=parent;//method 2
+            
+            let grandChild={
+              class:"Btech",
+              __proto__:child
+            }
+            
+            console.log(child.getName())
+            console.log(grandChild.getRoll())
+            console.log(grandChild.message1())
+        </pre>
+    </fieldset>
+    <hr>
+    <fieldset>
+        <legend>Que 3</legend>
+        Add a method to calculate sum of all elements in Array in array's protype, use that method to calculate sum for multiple arrays.
+    </fieldset>
+    <fieldset>
+        <pre>
+            Array.prototype.sum=function(){
+                return this.reduce((accum, curre) => accum + curre);
+            }
+            
+            const array1 = [1, 2, 3, 4, 5];
+            const array2 = [10, 20, 30];
+            const array3 = [0, 5, -5, 10];
+            
+            const sumofarray1=array1.sum();
+            const sumofarray2=array2.sum();
+            const sumofarray3=array3.sum();
+            
+            console.log(sumofarray1)
+            console.log(sumofarray2)
+            console.log(sumofarray3)
+        </pre>
+    </fieldset>
+    <hr>
+    <fieldset>
+        <legend>Que 4</legend>
+        Write a JavaScript function to retrieve all the names of object's own and inherited properties.
+    </fieldset>
+    <fieldset>
+        <pre>
+            function retrieveAll(){
+                const object1 = {
+                  a: 1,
+                  b: 2,
+                  c: 3
+                };
+                console.log(Object.getOwnPropertyNames(object1));
+                let proto=Object.getPrototypeOf(object1);
+                console.log(proto);
+                }
+                retrieveAll();
+        </pre>
+    </fieldset>
+    <script src="./script.js"></script>
+</body>
+</html>
